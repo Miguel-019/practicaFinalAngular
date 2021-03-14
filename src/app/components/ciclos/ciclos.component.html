@@ -1,0 +1,52 @@
+<div>
+    <h2>Los ciclos tecnológicos son</h2>
+    <div class="row">
+        <div class="col" >
+            <h2>DAM</h2>
+            <p>Asignaturas:</p>
+            <ul class="list-group" >
+                <li class="list-group-item" *ngFor="let item of asignaturasDam" >
+                    {{item.nombre}}
+                </li>
+            </ul> 
+        </div>
+
+        <div class="col">
+            <h2>DAW</h2>
+            <p>Asignaturas:</p>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of asignaturasDaw">
+                    {{item.nombre}}
+                </li>
+            </ul>
+        </div>
+        
+
+            
+    </div>
+</div>
+
+
+<div>
+    <div class="row m-3">
+
+        <div class="col"  *ngFor="let item of ciclos" >
+            <div class="card" style="width: 18rem;" *ngIf="item.nombre == 'DAM'; else daw">
+                <img [src]="item.imagen | images" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.curso}} {{item.nombre}}</h5>
+                    <button (click)="verDetalles(item.nombre,item.curso)" class="btn btn-primary">Ver detalle</button>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;" #daw *ngIf="item.nombre =='DAW'">
+                <img [src]="item.imagen | images" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.curso}} {{item.nombre}}</h5>
+                    <button (click)="verDetalles(item.nombre,item.curso)" class="btn btn-primary">Ver detalle</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div> 
